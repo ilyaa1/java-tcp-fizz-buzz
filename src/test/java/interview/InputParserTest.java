@@ -27,7 +27,6 @@ public class InputParserTest {
         parser = new InputParser(reader, processor);
     }
 
-
     @Test
     public void assignmentExampleTest() throws IOException {
         expect(reader.getNextLine()).andReturn("begin");
