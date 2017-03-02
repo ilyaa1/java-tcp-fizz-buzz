@@ -1,11 +1,11 @@
 package interview;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class InputParser extends AbstractInputParser {
     public InputParser(InputReader reader, CommandProcessor processor) {
         super(reader, processor);
-
     }
 
     @Override
@@ -20,8 +20,14 @@ public class InputParser extends AbstractInputParser {
                     commands = new ArrayList<String>();
                 }
                 else if (message.equals("end")) {
-                    // String finalCommand = commands.stream().collect(Collectors.joining("\n"));
-                    processor.processCommand(String.join("\n", commands));
+                    String command = commands.stream().map(s -> s + "\n").collect(Collectors.joining(""));
+                    processor.processCommand(command);
+                }
+                else if (message.equals(null)) {
+                    throw new Exception("User input terminated");
+                }
+                else {
+                    commands.add(message);
                 }
             }
         }
