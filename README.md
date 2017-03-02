@@ -1,4 +1,4 @@
-# Futurice interview test
+# Java sockets fizz-buzz
 
 ## Run instructions
 
